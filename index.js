@@ -1,0 +1,1 @@
+$.ajax('https://repetitora.net/api/JS/Images');
