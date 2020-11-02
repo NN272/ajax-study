@@ -2,7 +2,9 @@ const button = document.querySelector("#click-me");
 const result = document.querySelector("#result");
 const input = document.querySelector("#input");
 button.addEventListener("click", () => {
-    makeRequest(input.value);
+    const promise = makeRequest(input.value);
+    promise
+        .then(onDataRecieved);
 });
 
 function onDataRecieved(data) {
