@@ -5,7 +5,7 @@ function makeRequest(page) {
         return data.data;
     });
 }
-
+    
 function getTasks() {
     const tasks = axios.get(`https://repetitora.net/api/JS/Tasks?widgetId=5345235`);
 
@@ -15,7 +15,10 @@ function getTasks() {
 }
 
 function createTasks(title) {
-    const create = axios.post(`https://repetitora.net/api/JS/Tasks?widgetId=5345235&title=${title}`);
+    const create = axios.post(`https://repetitora.net/api/JS/Tasks`, {
+        widgetId: 5345235,
+        title: title
+    });
 
     return create.then((response) => {
         return response.data;
