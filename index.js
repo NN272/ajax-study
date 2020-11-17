@@ -4,21 +4,21 @@ const input = document.querySelector("#input");
 const createinput = document.querySelector("#create-input");
 const createbutton = document.querySelector("#create-tasks");
 const res = document.querySelector("#res");
-const getTsks = document.querySelector("#get-tasks");
 
 button.addEventListener("click", () => {
-    const promise = makeRequest(input.value);
+    const promise = getImages(input.value);
     promise
         .then(onDataRecieved);
 });
 
-createbutton.addEventListener("click", () => {
-    const promise = createTasks(createinput.value);
+createTasks('learn JS').then((data) => {
+    console.log(data);
 });
 
-getTsks.addEventListener("click", () => {
+createbutton.addEventListener("click", () => {
     const promise = getTasks();
-    promise.then(onTasksRecieved);
+    promise
+        .then(onTasksRecieved);
 });
 
 function onDataRecieved(data) {
@@ -30,6 +30,9 @@ function onDataRecieved(data) {
 }
 
 function onTasksRecieved(tasks) {
+    const result = document.querySelector('#res');
+    result.innerHTML = '';
+
     tasks.forEach(task => {
         const li = document.createElement('li');
         li.innerHTML = task.title;
