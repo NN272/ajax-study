@@ -24,10 +24,12 @@ function createTasks(title) {
     });
 }
 
-function updateTasks(title) {
+function updateTasks(title, id, done) {
     const upd = axios.put(`https://repetitora.net/api/JS/Tasks`, {
         widgetId: 5345235,
-        title: title
+        title: title,
+        taskId: id,
+        done: done
     });
 
     return upd.then((response) => {
